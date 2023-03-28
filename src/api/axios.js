@@ -5,21 +5,21 @@ const createInstance = () => {
   const instance = axios.create({
     baseURL: "/api",
     timeout: 3000,
+    paramsSerializer: (params) => qs.stringify(params, { encode: false }),
+  
+      params: {
+        serviceKey: import.meta.env.VITE_SERVER_API_KEY,
+        returnType: "json",
+        numOfRows: "100",
+        pageNo: "1",
+        sidoName: "전국",
+        ver: "1.0",
+      },
+      paramsSerializer: {
+        serialize: (params) => qs.stringify(params),
+      },
   });
-  // paramsSerializer: (params) => qs.stringify(params, { encode: false }),
-  /*
-    params: {
-      serviceKey: import.meta.env.VITE_SERVER_API_KEY,
-      returnType: "json",
-      numOfRows: "100",
-      pageNo: "1",
-      sidoName: "전국",
-      ver: "1.0",
-    },
-    paramsSerializer: {
-      serialize: (params) => qs.stringify(params),
-    },
-  */
+ 
   instance.interceptors.request.use(
     (request) => {
       console.log();
