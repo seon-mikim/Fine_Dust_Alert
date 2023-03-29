@@ -3,7 +3,7 @@ import qs from "qs";
 
 const createInstance = () => {
   const instance = axios.create({
-    baseURL: "http://apis.data.go.kr/B552584/ArpltnInforInqireSv",
+    baseURL: "/api",
     timeout: 3000,
     paramsSerializer: (params) => qs.stringify(params, { encode: false }),
   
